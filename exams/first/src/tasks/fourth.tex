@@ -1,0 +1,179 @@
+\newsection{Mathematische Logik und Beweisführung}{task-4}
+
+\begin{enumerate}
+  \item{
+    Vera hat in diesem Wintersemester angefangen zu studieren und bereits ihre
+    ersten Vorlesungen gehört.
+    Sie mag dabei manche Vorlesungen lieber als andere.
+
+    Folgende Aussagen über {\glqq}Vera mag Vorlesung ...{\grqq} sind bereits bekannt:
+
+    {
+      \renewcommand{\labelenumii}{(\roman{enumii})}
+      \begin{enumerate}
+        \item{Vera mag Vorlesung-1 nicht.}
+        \item{Wenn Vera Vorlesung-2 nicht mag und Vorlesung-3 mag, dann mag sie auch Vorlesung-1.}
+        \item{Vera mag Vorlesung-3 oder sie mag Vorlesung-2 nicht.}
+      \end{enumerate}
+    }
+
+    Die Aussagen sollen als Aussagenlogische Formeln formuliert werden.
+
+    \begin{enumerate}
+      \item {
+        Geben Sie geeignte Variablen und deren Bedeutung für die Aussagen an!
+      }
+      \vfill
+      \item {
+        Formulieren Sie die Aussagen mit den Variablen als
+        \textbf{syntaktisch korrekte Aussagenlogische Formeln}.
+        \begin{enumerate}
+          \item{}
+          \item{\vspace{20pt}}
+          \item{\vspace{20pt}}
+          \item{\vspace{20pt}}
+        \end{enumerate}
+        \vspace{20pt} % The spacing is weird, which is why we have to shift all vspaces by one item
+      }
+      \item {
+        Finden Sie eine Bewertung, mit der alle Regeln erfüllt sind.
+      }
+      \vfill
+      \item {
+        Ist es möglich, dass alle Regeln erfüllt sind und Vera Vorlesung-2 anders
+        bewertet als Vorlesung-3?
+        Begründen Sie Ihre Antwort kurz mittels der Methodik aus der Vorlesung!
+      }
+      \vfill
+    \end{enumerate}
+  }
+  \newpage
+  \item{
+    Nun betrachten wir den korrekten Umgang mit Wertetabellen zur Aussagenlogik!
+    Folgende Aussagenlogische Formeln sind gegeben:
+
+    \[
+      \varphi_1 = (X \wedge (Y \vee Z)) \quad
+      \varphi_2 = ((X \wedge Y) \vee (X \wedge Z)) \quad
+      \varphi = (\varphi_1 \leftrightarrow \varphi_2)
+    \]
+
+    \vspace{10pt}
+    \begin{enumerate}
+      \item {
+        Welche allgemeingültige Aussagen wird durch $(\varphi_1 \leftrightarrow \varphi_2)$
+        ausgedrückt?
+        \vspace{40pt}
+      }
+      \item {
+        Werten Sie die folgende Wahrheitstabelle aus, indem Sie die leeren
+        Spalten mit \textbf{syntaktisch korrekten} Hilfsaussagen füllen!
+
+        \vspace{10pt}
+        \setlength{\tabcolsep}{10pt}
+        \renewcommand{\arraystretch}{1.5}
+        \begin{center}
+          \begin{tabular}{c|c|c||c|c|c||c|c|c}
+            $X$ & $Y$ & $Z$ & $(Y \vee Z)$ & \hspace{60pt} & \hspace{60pt} & $\varphi_1$ & $\varphi_2$ & $\varphi$ \\ \hline\hline
+            0 & 0 & 0 & & & & & & \\ \hline
+            0 & 0 & 1 & & & & & & \\ \hline
+            0 & 1 & 0 & & & & & & \\ \hline
+            0 & 1 & 1 & & & & & & \\ \hline
+            1 & 0 & 0 & & & & & & \\ \hline
+            1 & 0 & 1 & & & & & & \\ \hline
+            1 & 1 & 0 & & & & & & \\ \hline
+            1 & 1 & 1 & & & & & & \\ \hline
+          \end{tabular}
+        \end{center}
+        \vspace{20pt}
+      }
+      \item {
+        Wie lässt sich anhand dieser Wertetabelle erkennen, dass $\varphi$
+        eine Tautologie ist?
+        Begründen Sie kurz.
+      }
+    \end{enumerate}
+  }
+  \newpage
+  \item {
+    Wir betrachten das Resolutionskalkül für Aussgnelogische Formeln und
+    dessen Ableitungsregeln!
+
+    Doktor Halbschlau hat sich für das Resolutionskalkül der Aussagenlogik
+    folgende neue Ableitungsregeln ausgedacht.
+
+    Aus zwei beliebige Klauseln $C_1, C_2$ entsteht immer und ohne Bedingungen
+    in einem einzigen Resolutionsschritt eine neue Klausel
+    \[
+      C = C_1 \cup C_2
+    \]
+
+    Die Abbildung zeigt ein ganz einfaches Beispiel der Anwendung dieser Regel:
+
+    \begin{center}
+      \begin{tikzpicture}[distance = 2cm]
+        \node (c1) {$C_1 = \{\neg X, Z\}$};
+        \node (c) [right=of c1, below=1.5cm] {$C = \{\neg X, Z, Y, W\}$};
+        \node (c2) [right=of c, above=1.5cm] {$C_2 = \{\neg X, Y, W\}$};
+
+        \draw (c1) -- (c);
+        \draw (c2) -- (c);
+        % below=2cm
+      \end{tikzpicture}
+    \end{center}
+
+    \vspace{20pt}
+    \begin{enumerate}
+      \item {
+        Für eine Klauselmenge $K$ ist Res$^1(K)$ wie folgt definiert.
+        Geben Sie konkret die neuen Resolventen an, die sich aus dem
+        Resolutionskalkül von Doktor Halbschlau ableiten lassen!
+
+        \vspace{10pt}
+        \[
+          \hspace{-120pt} \text{Res}^1(K) \coloneq \text{Res}(K) = K \cup \{
+        \]
+        \vspace{10pt}
+      }
+      \item {
+        Geben Sie nun auch die Definition von Res$^2(K)$ \textit{und}
+        die konkreten Resolventen, die sich im 2. Schritt ableiten lassen, an.
+
+        \vspace{10pt}
+        \[
+          \hspace{-60pt} \text{Res}^2(K) \coloneq \hspace{120pt} = K \cup \{
+        \]
+        \vspace{10pt}
+      }
+      \item {
+        Ab welchem $n \in \mathbb{N}$ gilt Res$^n(K) =$ Res$^*(K)$?
+        Geben Sie jenes $n$ an und begründen Sie in einem \textbf{einzigen Satz}!
+      }
+    \end{enumerate}
+  }
+  \newpage
+  \item {
+    Wir wollen uns mit der Korrektheit und der Vollständigkeit des
+    vorhin vorgestellten Resolutionskalküls von Doktor Halbschlau beschäftigen.
+
+    \begin{enumerate}
+      \item {
+        Beweisen Sie allgemein anhand einer Bewertung $B$ und deren Bedeutung,
+        dass, wenn die Klauseln $\{C_1, C_2\}$ erfüllt sind, auch immer die
+        Klauselmenge $\{C_1, C_2, C\}$ erfüllt ist.
+      }
+      \vfill
+      \item {
+        Beweisen oder widerlegen Sie in einem \textbf{einzigen Satz}, dass
+        die Ableitungsregeln des Resolutionskalküls \textit{korrekt} im Sinne der
+        Vorlesung sind.
+        \vspace{50pt}
+      }
+      \item {
+        Zeigen Sie anhand eines kleinen Beispiels, dass das Resolutionskalkül
+        nicht \textit{vollständig} im Sinne der Vorlesung ist.
+      }
+      \vfill \vfill
+    \end{enumerate}
+  }
+\end{enumerate}
