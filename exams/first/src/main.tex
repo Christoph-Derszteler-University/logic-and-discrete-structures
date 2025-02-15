@@ -61,6 +61,7 @@
 \newcommand{\newsection}[2]{\renewcommand{\sectiontitle}{#1}\section{#1}\label{sec:#2}}
 
 \usepackage{fancyhdr}
+\usepackage{pdfpages}
 \pagestyle{fancy}
 \lhead{Matrikelnummer: }
 \rhead{}
@@ -69,10 +70,11 @@
 
 % Document
 \begin{document}
+  \includepdf[pages=-]{external/cover.pdf}
+  \includepdf[pages=-]{external/front-page.pdf}
 
-  \input{tasks/first}
-  \input{tasks/second}
-  \input{tasks/third}
-  \input{tasks/fourth}
-
+  \include{tasks/first}
+  \include{tasks/second}
+  \include{tasks/third}
+  \include{tasks/fourth}
 \end{document}
