@@ -2,7 +2,7 @@
 %! BibTeX Compiler = biber
 
 % Preamble
-\documentclass[12pt]{article}
+\documentclass[10pt]{article}
 \title{LudS 24/25 Klausur I}
 \author{Christoph Derszteler}
 
@@ -17,6 +17,7 @@
   top=3cm,
   bottom=3cm
 ]{geometry}
+\usepackage[small]{titlesec}
 \usepackage[bottom]{footmisc}
 \usepackage{float}
 \usepackage{setspace}
@@ -38,6 +39,7 @@
 \usepackage{amssymb}
 \usepackage{xcolor}
 \usepackage{tikz}
+\usetikzlibrary{automata,positioning}
 \sisetup{
   group-separator = {,},
   input-decimal-markers={,},
@@ -47,9 +49,11 @@
 
 \counterwithin*{equation}{section}
 \counterwithin*{figure}{section}
-\renewcommand{\theequation}{\arabic{section}.\arabic{equation}}
-\renewcommand{\thefigure}{\arabic{section}.\arabic{figure}}
-\renewcommand{\thetable}{\arabic{section}.\arabic{table}}
+
+\renewcommand{\thesection}{Aufgabe \arabic{section}: }
+
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\renewcommand{\labelenumii}{(\arabic{enumii})}
 
 \newcommand{\sectiontitle}{}
 \newcommand{\newsection}[2]{\renewcommand{\sectiontitle}{#1}\section{#1}\label{sec:#2}}
@@ -57,12 +61,13 @@
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \lhead{Matrikelnummer: }
+\rhead{}
 \cfoot{\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
 
 % Document
 \begin{document}
 
-  Test
+  \input{tasks/first}
 
 \end{document}

@@ -1,0 +1,78 @@
+\newsection{Mengen, Relationen und Abbildungen}{task-1}
+
+\begin{enumerate}
+  \item {
+    Es seien N, M zwei Mengen mit $|N| = n, |M| = m$ und $|N \setminus M| = d$.
+    Geben Sie die folgenden Kardinalitäten an.
+    Begründen Sie Ihre Antwort kurz, indem Sie die Zwischenschenschritte angeben.
+    \begin{enumerate}
+      \item $|\mathcal{P}(M \cup N)| = $ \vspace*{4cm}
+      \item $|(M \cap N) \times M| = $ \vspace*{4cm}
+    \end{enumerate}
+  }
+  \item {
+    Zeigen Sie mittels vollständiger Induktion, dass für alle $n \in \mathbb{N}$
+    gilt:
+    \[
+      \sum_{i=0}^{n-1} (3i^2 + 3i + 1) = n^3
+    \]
+  }
+  \newpage
+  \item {
+    Kreuzen Sie für jede der folgenden Funktionen an, ob sie \textit{injektiv},
+    \textit{surjektiv} oder \textit{weder noch} ist.
+    Eine Begründung ist \textit{nicht} notwendig.
+
+    \setlength{\tabcolsep}{10pt}
+    \renewcommand{\arraystretch}{2}
+    \begin{tabular}{@{}l c c c@{}}
+      & $f$ injektiv & $f$ surjektiv & $f$ weder injektiv noch surjektiv \\
+      $f: \mathbb{R} \to \mathbb{R} $ mit $f(x) = x^2 - 2x$ & $\square$ & $\square$ & $\square$ \\
+      $f: \mathcal{P}(\mathbb{N}) \to \mathbb{N}_0 $ mit $f(A) = |A|$ & $\square$ & $\square$ & $\square$ \\[10pt]
+      $f: \mathbb{R} \to \mathbb{R} $ mit $f(x) =
+        \begin{cases}
+          -(x^2), & x \leq 0 \\
+          x^2 & x > 0
+        \end{cases}
+        $ & $\square$ & $\square$ & $\square$ \\[10pt]
+      $f: \mathbb{R}^2 \to \mathbb{R}^2 $ mit $f(x, y) = (y-7, \frac{1}{4} x)$ & $\square$ & $\square$ & $\square$ \\
+      $f: \mathbb{R}^2_{\geq 0} \to \mathbb{R}_{\geq 0} $ mit $f(x, y) = x^y$ & $\square$ & $\square$ & $\square$ \\
+      $f: \mathbb{N}^2 \to \mathbb{N} $ mit $f(x, y) = x^2 + y^2$ & $\square$ & $\square$ & $\square$
+    \end{tabular}
+  }
+  \vspace{\fill}
+  \item {
+    Seien $M = \{A, B, C, D\}$ eine Menge und $R \subseteq M \times M$ die unten
+    schematisch dargestellte Relation auf $M$. Geben Sie jeweils mit
+    \textit{kurzer} Begründung an, ob $R$ reflexiv, symmetrisch, transitiv,
+    antisymmetrisch bzw. eine Äquivalenzrelation ist.
+
+    \begin{center}
+    \begin{tikzpicture}[node distance=2cm, auto]
+      \node[state] (A)  {$A$};
+      \node[state] (B) [right=of A]  {$B$};
+      \node[state] (C) [below=of A]  {$C$};
+      \node[state] (D) [below=of B]  {$D$};
+      \path[->]
+      (A) edge [bend left =15] node {} (B)
+      (B) edge [bend right =-15] node {} (A)
+      (A) edge [bend left =15] node {} (C)
+      (C) edge [bend right =-15] node {} (A)
+      (B) edge [bend left =15] node {} (D)
+      (D) edge [bend right =-15] node {} (B)
+      (B) edge [bend left =15] node {} (C)
+      (C) edge [bend right =-15] node {} (B);
+    \end{tikzpicture}
+    \end{center}
+    \vspace{\fill}
+
+    \begin{minipage}{\linewidth}
+      reflexiv: \hrulefill \\[10pt]
+      symmetrisch: \hrulefill \\[10pt] \hrule \vspace{18pt}
+      transitiv: \hrulefill \\[10pt] \hrule \par\vspace{18pt}
+      antisymmetrisch: \hrulefill \\[10pt] \hrule \par\vspace{18pt}
+      Äquivalenzrelation: \hrulefill
+    \end{minipage}
+  }
+  \vspace{\fill}
+\end{enumerate}
