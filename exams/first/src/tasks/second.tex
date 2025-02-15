@@ -1,0 +1,78 @@
+\newsection{Reguläre Sprachen und Automaten}{task-2}
+
+\newcommand{\statement}[1]{
+  \item{
+    \noindent\begin{minipage}[t]{0.65\linewidth} % Left side (text)
+      #1
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.31\linewidth} % Right side
+      \vfill % Used to center vertically
+      \begin{center}
+        \setlength{\tabcolsep}{10pt} % Sets the column padding
+        \begin{tabular}{@{}c c@{}}
+          Wahr & Falsch \\
+          $\square$ & $\square$
+        \end{tabular}
+      \end{center}
+      \vfill % Used to center vertically
+    \end{minipage}
+
+    \vspace{10pt}
+    \begin{minipage}{\linewidth}
+    Begründung: \hrulefill \\[10pt] \hrule \vspace{20pt} \hrule
+    \end{minipage}
+  }
+}
+
+\begin{enumerate}
+  \item {
+    Geben Sie für den folgenden regulären Ausdruck die \textbf{Ableitungsregeln}
+    einer Grammatik mit \textbf{minimaler} Anzahl an:
+
+    \[
+      R = b(aa + b)^*
+    \]
+
+    \vspace{10pt}
+
+    Ableitungsregeln:
+  }
+  \vspace{\fill}
+  \item {
+    Zeichnen Sie für die folgende Sprache einen Deterministischen Endlichen
+    Automaten (DFA) als Zustandsübergangsdiagramm:
+
+    \[
+      L = \{w \in \{0, 1\}^*\mathbin{:} w \text{~beginnt mit 1 und endet auf 0}\}
+    \]
+  }
+  \vspace{\fill}
+  \newpage
+  \item {
+    Geben sind die vier folgenden Aussagen über reguläre Sprachen.
+    Entscheiden Sie jeweils, ob diese Aussagen wahr oder falsch sind und geben
+    Sie eine Begründung an.
+
+    \begin{enumerate}
+      \setlength\itemsep{10pt}
+      \statement{
+        Wenn es bei einem NFA mindestens einen Übergang gibt, sodass das gelesene
+        $w \in \Sigma{^*}$ in einem verwerfenden Zustand landet,
+        so akzeptiert der NFA $w$ nicht.
+      }
+      \statement{
+        Ein minimaler NFA hat höchstens so viele Zustände wie ein äquivalenter
+        DFA, der die gleiche Sprache entscheidet, mit minimaler Anzahl an Zuständen.
+      }
+      \statement{
+        Jede Sprache, die nur Wörter der Länge $k \in \mathbb{N}$ akzeptiert,
+        ist regulär.
+      }
+      \statement{
+        Jede nicht reguläre Sprache kann durch das Pumping-Lemma auch als solche
+        identifiziert werden.
+      }
+    \end{enumerate}
+  }
+\end{enumerate}
