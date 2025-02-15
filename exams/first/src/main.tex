@@ -1,0 +1,67 @@
+%! suppress = NonBreakingSpace
+%! BibTeX Compiler = biber
+
+% Preamble
+\documentclass[12pt]{article}
+\title{LudS 24/25 Klausur I}
+\author{Christoph Derszteler}
+
+% Packages
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[ngerman]{babel}
+\usepackage[
+  left=3cm,
+  right=3cm,
+  top=3cm,
+  bottom=3cm
+]{geometry}
+\usepackage[bottom]{footmisc}
+\usepackage{float}
+\usepackage{setspace}
+\interfootnotelinepenalty=100000
+\usepackage{blindtext}
+
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+  linkcolor=black,
+  linktoc=all,
+}
+
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{gensymb}
+\usepackage{siunitx}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage{tikz}
+\sisetup{
+  group-separator = {,},
+  input-decimal-markers={,},
+  output-decimal-marker = {,},
+  exponent-product={\ensuremath{\cdot}}
+}
+
+\counterwithin*{equation}{section}
+\counterwithin*{figure}{section}
+\renewcommand{\theequation}{\arabic{section}.\arabic{equation}}
+\renewcommand{\thefigure}{\arabic{section}.\arabic{figure}}
+\renewcommand{\thetable}{\arabic{section}.\arabic{table}}
+
+\newcommand{\sectiontitle}{}
+\newcommand{\newsection}[2]{\renewcommand{\sectiontitle}{#1}\section{#1}\label{sec:#2}}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{\thesubsection}
+\chead{\MakeUppercase{\sectiontitle}}
+\rhead{\thepage}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% Document
+\begin{document}
+
+\end{document}
