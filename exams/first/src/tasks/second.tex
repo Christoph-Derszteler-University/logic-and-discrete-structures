@@ -1,6 +1,6 @@
 \newsection{Reguläre Sprachen und Automaten}{task-2}
 
-\newcommand{\statement}[1]{
+\newcommand{\statement}[3]{
   \item{
     \noindent\begin{minipage}[t]{0.65\linewidth} % Left side (text)
       #1
@@ -12,7 +12,9 @@
         \setlength{\tabcolsep}{10pt} % Sets the column padding
         \begin{tabular}{@{}c c@{}}
           Wahr & Falsch \\
-          $\square$ & $\square$
+          \ifthenelse{\boolean{#2}}
+            {$\correctsquare$ & $\square$}
+            {$\square$ & $\correctsquare$}
         \end{tabular}
       \end{center}
       \vfill % Used to center vertically
@@ -20,7 +22,7 @@
 
     \vspace{10pt}
     \begin{minipage}{\linewidth}
-    Begründung: \hrulefill \\[10pt] \hrule \vspace{20pt} \hrule
+    Begründung: \solution{#3}{\hrulefill \\[10pt] \hrule \vspace{20pt} \hrule}
     \end{minipage}
   }
 }
@@ -38,6 +40,11 @@
     \vspace{10pt}
 
     Ableitungsregeln:
+    \solution{
+      \[
+        S \to bA, \; A \to bA|aB|\varepsilon, \; B \to aA
+      \]
+    }{}
   }
   \vspace{\fill}
   \item {
@@ -47,8 +54,31 @@
     \[
       L = \{w \in \{0, 1\}^*\mathbin{:} w \text{~beginnt mit 1 und endet auf 0}\}
     \]
+
+    \solution{
+      \vspace{20pt}
+
+      \begin{center}
+      \begin{tikzpicture}[auto]
+        \node [state, initial] (q_0) {$q_0$};
+        \node [state] (q_1) [right=of q_0] {$q_1$};
+        \node [state, accepting] (q_2) [right=of q_1] {$q_2$};
+        \node [state] (q_end) [below=of q_1] {$\hat{q}$};
+
+        \path[->]
+        (q_0) edge node {1} (q_1)
+              edge node {0} (q_end)
+        (q_1) edge [loop above] node {1} (q_1)
+              edge [bend left =15] node {0} (q_2)
+        (q_2) edge [loop above] node {0} (q_2)
+              edge [bend right =-15] node {1} (q_1)
+        (q_end) edge [loop below] node {0, 1} (q_end);
+      \end{tikzpicture}
+      \end{center}
+
+      \vspace{\fill}
+    }{\vspace{\fill}}
   }
-  \vspace{\fill}
   \newpage
   \item {
     Geben sind die vier folgenden Aussagen über reguläre Sprachen.
@@ -61,18 +91,40 @@
         Wenn es bei einem NFA mindestens einen Übergang gibt, sodass das gelesene
         $w \in \Sigma{^*}$ in einem verwerfenden Zustand landet,
         so akzeptiert der NFA $w$ nicht.
+      }{false}{
+        Dies ist nicht korrekt, denn ein NFA funktioniert genau andersherum.
+        Definitionsgemäß gilt, dass ein NFA $w \in \Sigma^*$ akzeptiert,
+        wenn es einen Übergang von $w$ gibt, sodass $w$ in einem akzeptierenden
+        Zustand landet.
       }
       \statement{
         Ein minimaler NFA hat höchstens so viele Zustände wie ein DFA,
         der die gleiche Sprache entscheidet, mit minimaler Anzahl an Zuständen.
+      }{true}{
+        Dies stimmt, da ein NFA genauso mächtig ist wie ein DFA und höchstens
+        Zustände sparen kann.
+        Ein minimaler NFA kann also weniger Zustände besitzen als ein minimaler DFA,
+        aber entsprechend besitzt ein minimaler NFA höchstens so viele Zustände
+        wie ein äquivalenter minimaler DFA.
       }
       \statement{
         Sei $k \in \mathbb{N}$ beliebig, aber fest.
         Jede Sprache, die nur Wörter der Länge $k$ akzeptiert, ist regulär.
+      }{true}{
+        Dies ist ebenfalls korrekt, da für solch eine Sprache z.B.
+        alle akzeptierten Wörter explizit durch eine endliche Anzahl an
+        Zuständen kodiert werden könnte.
       }
       \statement{
         Jede nicht reguläre Sprache kann durch das Pumping-Lemma auch als solche
         identifiziert werden.
+      }{false}{
+        Dies ist nicht korrekt, denn es gilt lediglich die Implikation:
+        Wenn die Sprache $L$ regulär ist, erfüllt $L$ das Pumping-Lemma.
+        Dadurch folgt nicht automatisch: Wenn $L$ nicht regulär ist,
+        gilt das Pumping-Lemma nicht.
+        Es gibt also auch nicht reguläre Sprachen, die trotzdem das Pumping-
+        Lemma erfüllen.
       }
     \end{enumerate}
   }
@@ -84,5 +136,24 @@
     \[
       L = \{w \in \Sigma ~| ~|w|_a = |w|_b + 1\}
     \]
+    \solution{
+      \doublespacing
+
+      Sei $n \in \mathbb{N}$ die vom Pumping-Lemma gegebene Schranke.
+      Sei $z = a^{n}b^{n+1} \in L$, $|z| \geq n$.
+
+      $\Rightarrow$ Es existiert eine Zerlegung $z = uvw$ mit $|uv| \leq n$ und $|v| \geq 1$.
+
+      Nach Definition von $z$ besteht $v$ nur aus $a$. $\Rightarrow$ $v = a^k, 1 \leq k \leq n$.
+
+      $\Rightarrow z = uvw = a^{j-k}a^{k}a^{n-j}b^{n+1} = a^{j-k+k+n-j}b^{n+1} = a^{n}b^{n+1} \in L, k \leq j \leq n$.
+
+      Nach Pumping-Lemma $z' = uv^{i}w \in L$ für $i \in \mathbb{N}_0$.
+      Sei $i=2 \in \mathbb{N}_0$.
+
+      $\Rightarrow z' = uv^{2}w = a^{j-k}a^{k}a^{k}a^{n-j}b^{n+1} = a^{n+k}b^{n+1} \notin L$. \Large\lightning\normalsize
+
+      $\Rightarrow L$ ist nicht regulär.
+    }{}
   }
 \end{enumerate}
