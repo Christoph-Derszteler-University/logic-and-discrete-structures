@@ -9,6 +9,7 @@
 % Packages
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
+\usepackage{bbding} % Required for '\Checkmark' symbol
 \usepackage[ngerman]{babel}
 \usepackage[
   a4paper,
@@ -38,6 +39,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{mathtools}
+\usepackage{cancel}
 \usepackage{xcolor}
 \usepackage{tikz}
 \usetikzlibrary{automata,positioning}
@@ -67,6 +69,17 @@
 \rhead{}
 \cfoot{\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
+
+\usepackage{ifthen}
+\usepackage{wasysym}
+\newboolean{showsolutions}
+\setboolean{showsolutions}{false}
+\newcommand{\solution}[2]{
+  \ifthenelse{\boolean{showsolutions}}
+    {\color{olive} #1 \color{black}}  % Show solution if showsolutions is true
+    {#2}  % Show blank space if showsolutions is false
+}
+\newcommand{\correctsquare}{\solution{\boxtimes}{\square}}
 
 % Document
 \begin{document}
