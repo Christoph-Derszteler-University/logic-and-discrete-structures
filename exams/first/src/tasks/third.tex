@@ -6,12 +6,61 @@
     Zeigen Sie mittels Diagonalisierung, dass die Menge \\
     $M = \{f~|~f: \mathbb{N} \to S\}$ nicht abzählbar unendlich ist, ohne die
     Überabzählbarkeit anderer Mengen zu nutzen.
+
+    \solution{
+      \doublespacing
+      Beweis (indirekt):
+
+      \underline{Ann.}: M sei abzählbar unendlich. $\Rightarrow$ Es existiert $f: \mathbb{N} \to M$, $f$ bijektiv.
+      $f_i \coloneq f(i),\: \forall i \in \mathbb{N}$.
+
+      Sei $g: \mathbb{N} \to S$ mit
+      \[
+        g(i) = \begin{cases}
+                 2, & f_i(i) \neq 2 \\
+                 5, & sonst
+               \end{cases}
+      \]
+      $\Rightarrow g \in M$
+
+      $\Rightarrow \exists i \in \mathbb{N}$ mit $f(i) = g$.
+
+      Fall 1: $g(i) = 2 \overset{\text{Def. }f_i}{\Rightarrow} f_i(i) = 2 \overset{\text{Def. }g}{\Rightarrow} g(i) \neq 2$ \Large\lightning\normalsize \\
+      Fall 2: $g(i) \neq 2 \overset{\text{Def. }f_i}{\Rightarrow} f_i(i) \neq 2 \overset{\text{Def. }g}{\Rightarrow} g(i) = 2$ \Large\lightning\normalsize
+
+      $\Rightarrow M$ ist nicht abzählbar unendlich. M ist überabzählbar. $\Box$
+    }{}
   }
   \newpage
   \item {
     Bestimmen Sie mit Hilfe des chinesischen Restsatzes eine Zahl
-    $x \in \mathbb{Z}$ mit $x \equiv 3$ mod $12$ und $x \equiv 4$ mod $7$.
+    $x \in \mathbb{Z},\: x < 84$ mit $x \equiv 3$ mod $12$ und $x \equiv 4$ mod $7$.
     Geben Sie dazu ihre Zwischenschritte und das finale Ergebnis an.
+
+    \solution{
+      1. $ggT(12, 7)$
+      \begin{equation*}
+        \begin{aligned}
+          12 = 1 \cdot 7 + 5 \\
+          7 = 1 \cdot 5 + 2 \\
+          5 = 2 \cdot 2 + 1 \\
+          2 = 2 \cdot 1 + 0
+        \end{aligned}
+      \end{equation*}
+
+      2. Andere Dartsellung
+      \begin{equation*}
+        \begin{aligned}
+          1 &= 1 \cdot 5 - 2 \cdot 2 = 1 \cdot 5 - 2 \cdot (1 \cdot 7 - 1 \cdot 5) && \\
+            &= -2 \cdot 7 + 3 \cdot 5 = -2 \cdot 7 + 3 \cdot (1 \cdot 12 - 1 \cdot 7) && \\
+            &= 3 \cdot 12 - 5 \cdot 7 &&
+        \end{aligned}
+      \end{equation*}
+
+      3. Chinesischer Restsatz
+
+      $x = 3 \cdot 12 \cdot 4 + (-5) \cdot 7 \cdot 3 = 3 \cdot (12 \cdot 4 + (-5) \cdot 7) = 3 \cdot (48 - 35) = 3 \cdot 13 = 39 < 84$
+    }{}
   }
   \vfill
   \item {
@@ -19,6 +68,26 @@
     bilden?
     Begründen Sie ihre Rechnung kurz!
     Sie brauchen das Ergbnis nicht auszurechnen.
+
+    \solution{
+
+      Dies lässt sich anhand der kombinatorischen Zusammenhänge im Urnenmodell
+      erklären.
+      Vergleichbar ist dieser Kontext mit Ziehen mit Reihenfolge und ohne Zurücklegen.
+
+      Es gibt also grundsätzlich $n!$ verschiedene Möglichkeiten, das Wort zu
+      permutieren, bei $n$ Buchstaben.
+      Hierbei muss allerdings die Anzahl an doppelt vorkommenden Buchstaben,
+      die ein gleiches Wort ergeben würden, herausgenommen werden.
+      $k_w \coloneq$ Anzahl des Buchstabens $w$.
+
+      \[
+        \Rightarrow p = \frac{n!}{k_W! \cdot k_A! \cdot k_S! \cdot k_E! \cdot k_R! \cdot k_I!}
+        = \frac{9!}{1! \cdot 1! \cdot 3! \cdot 2! \cdot 1! \cdot 1!}
+        = \frac{9!}{3! \cdot 2!}
+      \]
+      Es gibt $p$ verschiedene Permutationen des Wortes WASSEREIS.
+    }{}
   }
   \vfill
   \newpage
@@ -37,5 +106,77 @@
     eine Gruppe oder keines von alledem handelt und ob die Verknüpfung kommutativ
     ist.
     Begründen Sie Ihre Antworten.
+
+    \solution{
+      Kommutativität:
+
+      $\forall f_1, f_2 \in \mathcal{G}: \forall n \in \mathbb{N}$ gilt:
+      \begin{equation*}
+        \begin{aligned}
+          & f_1 \sim f_2 && \\
+          &= f_1(n) \cdot f_2(n) && \\
+          &= f_2(n) \cdot f_1(n) && \\
+          &= f_2 \sim f_1 &&
+        \end{aligned}
+      \end{equation*}
+      $\Rightarrow \; \sim$ ist kommutativ.
+
+      \bigskip
+      Assoziativität:
+
+      $\forall f_1, f_2, f_3 \in \mathcal{G}: \forall n \in \mathbb{N}$ gilt:
+      \begin{equation*}
+        \begin{aligned}
+        & f_1 \sim (f_2 \sim f_3) && \\
+          &= f_1 \sim (f_2(n) \cdot f_3(n)) && \\
+          &= f_1(n) \cdot (f_2(n) \cdot f_3(n)) && \\
+          &= f_1(n) \cdot f_2(n) \cdot f_3(n) \quad \text{(Assoziativität der Multiplikation)} && \\
+          &= (f_1(n) \cdot f_2(n)) \cdot f_3(n) && \\
+          &= (f_1(n) \cdot f_2(n)) \sim f_3 && \\
+          &= (f_1 \sim f_2) \sim f_3 &&
+        \end{aligned}
+      \end{equation*}
+      $\Rightarrow \; \sim$ ist assoziativ.
+
+      \bigskip
+      Neutrales Element:
+
+      $\forall f \in \mathcal{G}: \forall n \in \mathbb{N}$ gilt:
+      $\exists e \in \mathcal{G}$ mit $e \sim f = f = f \sim e$. Wegen Kommutativität
+      reicht es, $e \sim f$ zu zeigen.
+
+      Sei $e: \mathbb{N} \to \mathbb{N}$ mit $e(n) = 1$.
+
+      \begin{equation*}
+        \begin{aligned}
+          & f \sim e && \\
+          &= f(n) \cdot e(n) && \\
+          &= f(n) \cdot 1 && \\
+          &= f(n)
+        \end{aligned}
+      \end{equation*}
+      $\Rightarrow \; \sim$ bestitz ein neutrales Element.
+
+      \bigskip
+      Inverse Elemente:
+
+      $\forall f \in \mathcal{G}: \forall n \in \mathbb{N}$ gilt:
+      Es existiert $f^{-1} \in \mathcal{G}$ mit $f \sim f^{-1} = e = f^{-1} \sim f$.
+
+      Widerspruch (Gegenbeispiel):
+
+      Sei $f: \mathbb{N} \to \mathbb{N}$ mit $f(n) = 2$.
+      Gesucht ist $f^{-1} \in \mathcal{G}$ mit oben genannter Eigenschaft.
+
+      $\Rightarrow\; f \sim f^{-1} = f(n) \cdot f^{-1}(n) = 2 \cdot f^{-1}(n) = 2 \cdot m = 1$.
+
+      $\Rightarrow$ Es existiert kein $m \in \mathbb{N}$, sodass jene Gleichung
+      erfüllt ist.
+
+      $\Rightarrow \; \sim$ bestitzt nicht für alle Elemente inverse Elemente.
+
+      \bigskip
+      $\Rightarrow \; (\mathcal{G}, \sim)$ ist ein kommutativer Monoid.
+    }{}
   }
 \end{enumerate}
