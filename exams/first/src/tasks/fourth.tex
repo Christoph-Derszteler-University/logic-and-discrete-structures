@@ -22,29 +22,73 @@
     \begin{enumerate}
       \item {
         Geben Sie geeignte Variablen und deren Bedeutung für die Aussagen an!
+
+        \solution{
+          V1: Vera mag Vorlesung-1 \\
+          V2: Vera mag Vorlesung-2 \\
+          V3: Vera mag Vorlesung-3
+        }{\vfill}
       }
-      \vfill
       \item {
         Formulieren Sie die Aussagen mit den Variablen als
         \textbf{syntaktisch korrekte Aussagenlogische Formeln}.
         \begin{enumerate}
-          \item{}
-          \item{\vspace{20pt}}
-          \item{\vspace{20pt}}
-          \item{\vspace{20pt}}
+          \item{
+            \solution{
+              $\varphi_1 = \neg V1$
+            }{}
+          }
+          \item{
+            \solution{
+              $\varphi_2 = ((\neg V2 \wedge V3) \to V1)$
+            }{\vspace{20pt}}
+          }
+          \item{
+            \solution{
+              $\varphi_3 = (\neg V2 \vee V3)$
+            }{\vspace{20pt}}
+          }
         \end{enumerate}
-        \vspace{20pt} % The spacing is weird, which is why we have to shift all vspaces by one item
+        \solution{}{\vspace{20pt}} % The spacing is weird, which is why we have to shift all vspaces by one item
       }
       \item {
         Finden Sie eine Bewertung, mit der alle Regeln erfüllt sind.
+
+        \solution{
+          Mit $B(V1) = 0$ und $B(V2) = B(V3) = 1$ sind alle Regeln erfüllt.
+        }{\vfill}
       }
-      \vfill
       \item {
         Ist es möglich, dass alle Regeln erfüllt sind und Vera Vorlesung-2 anders
         bewertet als Vorlesung-3?
         Begründen Sie Ihre Antwort kurz mittels der Methodik aus der Vorlesung!
+
+        \solution{
+          Nein, dies ist nicht möglich. Damit Regel (i) erfüllt ist, muss $B(V1) = 0$ sein.
+          Damit dann (ii) erfüllt ist, muss die Implikatiosnannahme falsch sein.
+          Dies ist der Fall, wenn mindestens entweder $B(V2) = 1$ oder $B(V3) = 0$.
+          Damit allerdings gleichzeitig (iii) erfüllt ist, muss die Bewertung der
+          Variable, die in (ii) dafür sorgt, dass die Implikationsannahme falsch ist,
+          die Disjunktion in (iii) erfüllen, also muss $B(V2) = 0$ oder $B(V3) = 1$ sein.
+
+          Die folgende Wahrheisttabelle zeigt den Zusammenhang anschaulich:
+
+          \vspace{10pt}
+          \setlength{\tabcolsep}{5pt}
+          \begin{center}
+            \begin{tabular}{c|c||c|c||c|c}
+              $V2$ & $V3$ & $(\neg V2 \wedge V3)$ & $(\neg V2 \vee V3)$ & $\varphi_2$ & $\varphi_3$ \\ \hline\hline
+              0 & 0 & 0 & 1 & 1 & 1 \\
+              0 & 1 & 1 & 1 & 0 & 1 \\
+              1 & 0 & 0 & 0 & 1 & 0 \\
+              1 & 1 & 0 & 1 & 1 & 1
+            \end{tabular}
+          \end{center}
+
+          Wie zu sehen ist, ermöglicht nur eine gleiche Bewertung von $V2$ und $V3$,
+          dass sowohol $\varphi_2$ als auch $\varphi_3$ erfüllt sind.
+        }{\vfill}
       }
-      \vfill
     \end{enumerate}
   }
   \newpage
@@ -63,7 +107,11 @@
       \item {
         Welche allgemeingültige Aussagen wird durch $(\varphi_1 \leftrightarrow \varphi_2)$
         ausgedrückt?
-        \vspace{40pt}
+
+        \solution{
+          Die Allgemeingültigkeit von $(\varphi_1 \leftrightarrow \varphi_2)$
+          drückt das Distributivgesetz der Disjunktion aus.
+        }{\vspace{40pt}}
       }
       \item {
         Werten Sie die folgende Wahrheitstabelle aus, indem Sie die leeren
@@ -74,15 +122,15 @@
         \renewcommand{\arraystretch}{1.5}
         \begin{center}
           \begin{tabular}{c|c|c||c|c|c||c|c|c}
-            $X$ & $Y$ & $Z$ & $(Y \vee Z)$ & \hspace{60pt} & \hspace{60pt} & $\varphi_1$ & $\varphi_2$ & $\varphi$ \\ \hline\hline
-            0 & 0 & 0 & & & & & & \\ \hline
-            0 & 0 & 1 & & & & & & \\ \hline
-            0 & 1 & 0 & & & & & & \\ \hline
-            0 & 1 & 1 & & & & & & \\ \hline
-            1 & 0 & 0 & & & & & & \\ \hline
-            1 & 0 & 1 & & & & & & \\ \hline
-            1 & 1 & 0 & & & & & & \\ \hline
-            1 & 1 & 1 & & & & & & \\ \hline
+            $X$ & $Y$ & $Z$ & $(Y \vee Z)$ & \solution{$(X \wedge Y)$}{\hspace{60pt}} & \solution{$(X \wedge Z)$}{\hspace{60pt}} & $\varphi_1$ & $\varphi_2$ & $\varphi$ \\ \hline\hline
+            0 & 0 & 0 & \solution{0}{} & \solution{0}{} & \solution{0}{} &\solution{0}{}  & \solution{0}{} & \solution{1}{} \\ \hline
+            0 & 0 & 1 & \solution{1}{} & \solution{0}{} & \solution{0}{} &\solution{0}{}  & \solution{0}{} & \solution{1}{} \\ \hline
+            0 & 1 & 0 & \solution{1}{} & \solution{0}{} & \solution{0}{} &\solution{0}{}  & \solution{0}{} & \solution{1}{} \\ \hline
+            0 & 1 & 1 & \solution{1}{} & \solution{0}{} & \solution{0}{} &\solution{0}{}  & \solution{0}{} & \solution{1}{} \\ \hline
+            1 & 0 & 0 & \solution{0}{} & \solution{0}{} & \solution{0}{} &\solution{0}{}  & \solution{0}{} & \solution{1}{} \\ \hline
+            1 & 0 & 1 & \solution{1}{} & \solution{0}{} & \solution{1}{} &\solution{1}{}  & \solution{1}{} & \solution{1}{} \\ \hline
+            1 & 1 & 0 & \solution{1}{} & \solution{1}{} & \solution{0}{} &\solution{1}{}  & \solution{1}{} & \solution{1}{} \\ \hline
+            1 & 1 & 1 & \solution{1}{} & \solution{1}{} & \solution{1}{} &\solution{1}{}  & \solution{1}{} & \solution{1}{} \\ \hline
           \end{tabular}
         \end{center}
         \vspace{20pt}
@@ -91,6 +139,13 @@
         Wie lässt sich anhand dieser Wertetabelle erkennen, dass $\varphi$
         eine Tautologie ist?
         Begründen Sie kurz.
+
+        \solution{
+          Es lässt sich anhand der Wertetabelle erkennen, dass $\varphi$ immer
+          wahr (1) und somit unabhängig von den Bewertungen von $X, Y$ und $Z$
+          ist.
+          Das macht $\varphi$ definitionsgemäß zu einer Tautologie.
+        }{}
       }
     \end{enumerate}
   }
@@ -123,15 +178,19 @@
     \end{center}
 
     \vspace{20pt}
+    Seien $C_1 = \{\neg x_1, x_2\},\: C_2 = \{x_1\}$ und $C_3 = \{\neg x_1, x_3\}$ Klauseln.
+
     \begin{enumerate}
       \item {
         Für eine Klauselmenge $K$ ist Res$^1(K)$ wie folgt definiert.
         Geben Sie konkret die neuen Resolventen an, die sich aus dem
-        Resolutionskalkül von Doktor Halbschlau ableiten lassen!
+        Resolutionskalkül von Doktor Halbschlau für $C_1, C_2$ und $C_3$
+        ableiten lassen!
 
         \vspace{10pt}
         \[
-          \hspace{-120pt} \text{Res}^1(K) \coloneq \text{Res}(K) = K \cup \{
+          \solution{}{\hspace{-120pt}} \text{Res}^1(K) \coloneq \text{Res}(K)
+            = K \cup \{ \solution{\{\neg x_1, x_1\}, \{\neg x_1, x_3\}, \{x_1, x_3\} \} }{}
         \]
         \vspace{10pt}
       }
@@ -141,13 +200,18 @@
 
         \vspace{10pt}
         \[
-          \hspace{-60pt} \text{Res}^2(K) \coloneq \hspace{120pt} = K \cup \{
+          \solution{}{\hspace{-60pt}} \text{Res}^2(K) \coloneq \solution{\text{Res}(\text{Res}^1(K))}{\hspace{120pt}} = \solution{\text{Res}^1(K) \cup \{\}}{\hspace{60pt} \cup \; \{}
         \]
         \vspace{10pt}
       }
       \item {
         Ab welchem $n \in \mathbb{N}$ gilt Res$^n(K) =$ Res$^*(K)$?
         Geben Sie jenes $n$ an und begründen Sie in einem \textbf{einzigen Satz}!
+
+        \solution{
+          Ab $n=1 \in \mathbb{N}$ gilt Res$^n(K) =$ Res$^*(K)$, da im 2. Schritt (s.o.)
+          keine neuen Resolventen ableitbar waren, also Res$^1(K) =$ Res$^2(K)$.
+        }{}
       }
     \end{enumerate}
   }
@@ -161,19 +225,51 @@
         Beweisen Sie allgemein anhand einer Bewertung $B$ und deren Bedeutung,
         dass, wenn die Klauseln $\{C_1, C_2\}$ erfüllt sind, auch immer die
         Klauselmenge $\{C_1, C_2, C\}$ erfüllt ist.
+
+        \solution{
+          Wenn die Klauselmenge $\{C_1, C_2\}$ erfüllt ist, müssen definitionsgemäß
+          jeweils alle Klauseln, also $C_1$ und $C_2$ erfüllt sein.
+          Dafür muss mindestens ein Literal aus je einer Klausel erfüllt sein.
+          Damit dies der Fall ist, muss für eine Bewertung eines Literals $l \in C$
+          $B(l) = 1$, sofern $l$ ein positives Literal ist, oder $B(l) = 0$,
+          sofern $l$ ein negatives Literal ist, gelten.
+
+          Die abgeleitete Klausel $C$ enthält nach der Ableitungsregel des
+          Resolutionskalküls alle Literale aus $C_1$ und $C_2$.
+          Da bereits die Klauselmenge $\{C_1, C_2\}$ erfüllt ist und somit jeweils
+          mindestens ein Literal aus $C_1$ und $C_2$ erfüllt sind, ist auch
+          mindestens ein Literal aus $C$ erfüllt.
+          Somit ist $C$ und damit auch die Klauselmenge $\{C_1, C_2, C\}$ erfüllt.
+        }{\vfill}
       }
-      \vfill
       \item {
         Beweisen oder widerlegen Sie in einem \textbf{einzigen Satz}, dass
         die Ableitungsregeln des Resolutionskalküls \textit{korrekt} im Sinne der
         Vorlesung sind.
-        \vspace{50pt}
+
+        \solution{
+          Da, wie oben gezeigt, alle abgeleiteten Klauseln aus zwei erfüllten Klauseln
+          ebenfalls erfüllt ist, werden nur wahre Aussagen abgeleitet und
+          das Resolutionskalkül ist definitionsgemäß korrekt.
+        }{\vspace{50pt}}
       }
       \item {
         Zeigen Sie anhand eines kleinen Beispiels, dass das Resolutionskalkül
         nicht \textit{vollständig} im Sinne der Vorlesung ist.
+
+        \solution{
+          Seien $C_1 = \{\neg x_1, x_2\}$ und $C_1 = \{x_1, x_2\}$ Klauseln.
+
+          Mittels dem aus der Vorlesung bekannten Resolutionskalkül lässt sich
+          die wahre Klausel $C = \{x_2\}$ ableiten.
+          Aus dem Resolutionskalkül von Doktor Halbschlau lässt sich allerdings
+          nur die Klausel $C' = \{\neg x_1, x_1, x_2\}$ ableiten.
+
+          Somit lassen sich aus dem gegebenen Resolutionskalkül nicht alle
+          wahren Aussagen ableiten und das Resolutionskalkül ist nicht vollständig
+          im Sinne der Vorlesung.
+        }{\vfill \vfill}
       }
-      \vfill \vfill
     \end{enumerate}
   }
 \end{enumerate}
