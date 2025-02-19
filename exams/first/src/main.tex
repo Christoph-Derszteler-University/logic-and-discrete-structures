@@ -1,0 +1,101 @@
+%! suppress = NonBreakingSpace
+%! BibTeX Compiler = biber
+
+% Preamble
+\documentclass[10pt]{article}
+\title{LudS 24/25 Klausur I}
+\author{Christoph Derszteler}
+
+% Packages
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{bbding} % Required for '\Checkmark' symbol
+\usepackage[ngerman]{babel}
+\usepackage[
+  a4paper,
+  left=2cm,
+  right=2cm,
+  top=3cm,
+  bottom=3cm
+]{geometry}
+\usepackage[small]{titlesec}
+\usepackage[bottom]{footmisc}
+\usepackage{float}
+\usepackage{setspace}
+\interfootnotelinepenalty=100000
+\usepackage{blindtext}
+
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+  linkcolor=black,
+  linktoc=all,
+}
+
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{gensymb}
+\usepackage{siunitx}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{cancel}
+\usepackage{stmaryrd} % Required for lightning symbol
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{automata,positioning}
+\sisetup{
+  group-separator = {,},
+  input-decimal-markers={,},
+  output-decimal-marker = {,},
+  exponent-product={\ensuremath{\cdot}}
+}
+
+\counterwithin*{equation}{section}
+\counterwithin*{figure}{section}
+
+\renewcommand{\thesection}{Aufgabe \arabic{section}: }
+
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\renewcommand{\labelenumii}{(\arabic{enumii})}
+\renewcommand{\labelenumiii}{(\roman{enumiii})}
+
+\newcommand{\sectiontitle}{}
+\newcommand{\newsection}[2]{\renewcommand{\sectiontitle}{#1}\section{#1}\label{sec:#2}}
+
+\usepackage{fancyhdr}
+\usepackage{pdfpages}
+\pagestyle{fancy}
+\lhead{Matrikelnummer: }
+\rhead{}
+\cfoot{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\usepackage{ifthen}
+\usepackage{wasysym}
+\newboolean{showsolutions}
+\setboolean{showsolutions}{false}
+\newcommand{\solution}[2]{
+  \ifthenelse{\boolean{showsolutions}}
+    {\color{olive} #1 \color{black}}  % Show solution if showsolutions is true
+    {#2}  % Show blank space if showsolutions is false
+}
+\newcommand{\correctsquare}{\solution{\boxtimes}{\square}}
+
+% Document
+\begin{document}
+  \includepdf[pages=-]{external/cover.pdf}
+  \includepdf[pages=-]{external/front-page.pdf}
+
+  \include{tasks/first}
+  \include{tasks/second}
+  \include{tasks/third}
+  \include{tasks/fourth}
+
+  \setboolean{showsolutions}{true}
+
+  \include{tasks/first}
+  \include{tasks/second}
+  \include{tasks/third}
+  \include{tasks/fourth}
+\end{document}
